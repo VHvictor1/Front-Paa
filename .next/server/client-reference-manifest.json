@@ -55,6 +55,14 @@
         "chunks": [],
         "async": false
       }
+    },
+    "(app-client)/./src/app/page.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/app/page.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
     }
   },
   "edgeSSRModuleMapping": {},
@@ -218,9 +226,21 @@
         "app-client-internals:static/chunks/app-client-internals.js"
       ],
       "async": false
+    },
+    "/home/vhvictor1/Front-Paa/src/app/page.tsx": {
+      "id": "(app-client)/./src/app/page.tsx",
+      "name": "*",
+      "chunks": [
+        "app/page:static/chunks/app/page.js"
+      ],
+      "async": false
     }
   },
   "entryCSSFiles": {
+    "/home/vhvictor1/Front-Paa/src/app/page": {
+      "modules": [],
+      "files": []
+    },
     "/home/vhvictor1/Front-Paa/src/app/layout": {
       "modules": [
         "/home/vhvictor1/Front-Paa/src/app/globals.css",
@@ -229,10 +249,6 @@
       "files": [
         "static/css/app/layout.css"
       ]
-    },
-    "/home/vhvictor1/Front-Paa/src/app/page": {
-      "modules": [],
-      "files": []
     }
   }
 }
