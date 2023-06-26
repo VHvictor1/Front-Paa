@@ -48,7 +48,9 @@ export default function Home() {
       </div>
       <div className="h-full w-[15rem] bg-black absolute left-0 flex flex-col items-center font-bold py-10">
         <p className="text-2xl pb-10"><span className="text-red-600 font-bold">POKE</span>CHAT</p>
-        <p>awnser: {modifiedString}</p>
+        <div className="w-full h-full">
+          <p>awnser: {modifiedString}</p>
+        </div>
       </div>
     </div>
   )
