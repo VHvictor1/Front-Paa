@@ -20,9 +20,9 @@ body {
   color: rgb(var(--foreground-rgb));
   width: 100vw;
   height: 100vh;
-  background-image: url(../../public/pokeball.gif);
+  /* background-image: url(../../public/pokeball.gif);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right;
-  background-opacity: 0.6;
+  background-opacity: 0.6; */
 }

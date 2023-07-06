@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState, FormEvent } from "react"
 import axios, { AxiosResponse } from 'axios';
+import Header from "./components/Header";
 
 export default function Home() {
 
@@ -28,7 +29,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col justify-center items-center w-full h-full relative">
-      <div className='opacity-50 w-full h-full absolute top-0 bg-white z-0' />
+      <Header title="POKE" />
       <div className="z-1 bg-gray-700 absolute w-[30rem] h-[20rem] rounded-lg opacity-80 flex flex-col items-center justify-center">
         <p className="text-grey50 font-semibold mb-2">Choose your question!!</p>
         <input
