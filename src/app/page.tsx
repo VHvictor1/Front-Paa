@@ -1,59 +1,74 @@
 "use client";
 import React, { useEffect, useState, FormEvent } from "react"
+import Image from "next/image";
 import axios, { AxiosResponse } from 'axios';
-import Header from "./components/Header";
+import Poke from '../../public/download.png'
+
+import Header from "./components/Header"
 
 export default function Home() {
 
   const [question, setQuestion] = useState("");
-  const [modifiedString, setModifiedString] = useState("");
+  const [request, setRequest] = useState({ question });
 
-  useEffect(() => {
-    alert("Querido usuário digite suas perguntas em inglês para obter uma melhor resposta!");
-  }, [])
+  //   useEffect(() => {
+  //     alert("Querido usuário digite suas perguntas em inglês para obter uma melhor resposta!");
+  //   }, [])
 
 
   const handleSubmit = async () => {
-    try {
-      const response: AxiosResponse<{ output_string: string }> = await axios.post('http://localhost:8000', {
-        question: question
-      });
+    setRequest({
+      question: question,
+    })
+    console.log(request)
+    // try {
+    //   const response: AxiosResponse<{ output_string: string }> = await axios.post('http://localhost:8000', {
+    //     data: request
+    //   });
 
-      const modifiedString = response.data.output_string;
-      setModifiedString(modifiedString);
-    } catch (error) {
-      console.error(error);
-    }
-     
+    //   const modifiedString = response.data.output_string;
+    //   setModifiedString(modifiedString);
+    // } catch (error) {
+    //   console.error(error);
+    // }
+
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-full h-full relative">
-      <Header title="POKE" />
-      <div className="z-1 bg-gray-700 absolute w-[30rem] h-[20rem] rounded-lg opacity-80 flex flex-col items-center justify-center">
-        <p className="text-grey50 font-semibold mb-2">Choose your question!!</p>
-        <input
-          type="text"
-          id="username"
-          className="bg-black rounded-lg z-10 border-b w-3/4 border-t-0 border-x-0 py-4 focus:outline-none  focus:border-b-2 transition-colors peer pl-[10px] text-white focus:font-semibold"
-          autoComplete="off"
-          placeholder='Question??'
-          onChange={(e) => setQuestion(e.target.value)}
-        />
-        <button
-          type="button"
-          onClick={handleSubmit}
-          className="bg-red-600 text-white text-sm/3 border-2 border-white rounded-md px-6 py-4 mt-5">
-          Send Question!
-        </button>
-      </div>
-      <div className="h-full w-[15rem] bg-black absolute left-0 flex flex-col items-center font-bold py-10">
-        <p className="text-2xl pb-10"><span className="text-red-600 font-bold">POKE</span>CHAT</p>
-        <div className="w-full h-full p-10 text-center">
-          <p>awnser:</p>
-          <p>{modifiedString}</p>
+    <div className="w-full h-full relative">
+      <Header title="CONTEXT" />
+      <Image src={Poke} alt="pokeball" className="absolute left-0 opacity-60"></Image>
+      <Image src={Poke} alt="pokeball" className="absolute right-0 opacity-60"></Image>
+      <Image src={Poke} alt="pokeball" className="absolute right-0 bottom-0 opacity-60"></Image>
+      <Image src={Poke} alt="pokeball" className="absolute left-0 opacity-60 bottom-0"></Image>
+      <div className="flex flex-col justify-center items-center gap-10">
+        <div className="w-[25rem] h-auto flex flex-col items-center py-6 border-2 rounded-lg px-4">
+          <p className="text-grey50 font-semibold mb-2 text-lg">Do your question, please</p>
+          <input
+            type="text"
+            className="bg-black rounded-lg w-full py-4 pl-[10px] text-white mb-2"
+            autoComplete="off"
+            placeholder='Question here...'
+            onChange={(e) => setQuestion(e.target.value)}
+          />
+          <button
+            type="button"
+            onClick={handleSubmit}
+            className="bg-red-600 text-white text-sm/3 border-2 border-white rounded-md px-6 py-4 mt-5">
+            Send Question
+          </button>
+        </div>
+        <div className="text-justify w-[50rem] h-[20rem] border-2 px-4 py-6 rounded-lg">
+          <p className="text-grey50 font-semibold mb-2 text-lg">Answser:</p>
+          <p className="text-black">{request.question}</p>
         </div>
       </div>
     </div>
   )
 }
+
+/* background-image: url(../../public/pokeball.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  background-opacity: 0.6; */

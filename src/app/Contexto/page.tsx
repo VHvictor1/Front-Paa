@@ -39,7 +39,7 @@ export default function Home() {
     <div className="w-full h-full">
       <Header title="CONTEXT" />
       <div className="flex justify-evenly">
-        <div className="w-[25rem] h-[30rem] h-full flex flex-col items-center py-6 border-2 rounded-lg px-4">
+        <div className="w-[25rem] h-[30rem] flex flex-col items-center py-6 border-2 rounded-lg px-4">
           <p className="text-grey50 font-semibold mb-2 text-lg">Do your question, please</p>
           <input
             type="text"
@@ -63,7 +63,7 @@ export default function Home() {
         </div>
         <div className="text-justify w-[25rem] h-[30rem] border-2 px-4 py-6 rounded-lg">
           <p className="text-grey50 font-semibold mb-2 text-lg">Answser:</p>
-          <p>{request.question} - {request.context}</p>
+          <p className="text-black">{request.question} - {request.context}</p>
         </div>
       </div>
     </div>
