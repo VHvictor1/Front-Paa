@@ -14,21 +14,18 @@ export default function Home() {
 
 
   const handleSubmit = async () => {
-    setRequest({
-      question: question,
-    })
-    console.log(request)
-    try {
-      const response: AxiosResponse<{ output_string: string }> = await axios.post('http:localhost:8000/pokemon/trained/question', {
-        data: request
-      });
+   
+    const response = await axios.post('http://127.0.0.1:8000/pokemon/trained/question', {
+      question: question
+    });
 
-      const modifiedString = response.data.output_string;
-      setModifiedString(modifiedString);
-    } catch (error) {
-      console.error(error);
-    }
+    console.log(response); // Log the entire response object
 
+    const modifiedString = response.data.answer;
+    console.log(modifiedString); // Log the value of modifiedString
+
+    setModifiedString(modifiedString);
+    
   };
 
   return (

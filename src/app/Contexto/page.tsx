@@ -8,21 +8,15 @@ export default function Home() {
 
   const [question, setQuestion] = useState("");
   const [context, setContext] = useState("");
-  const [request, setRequest] = useState({question, context});
+ 
   const [modifiedString, setModifiedString] = useState("");
 
   const handleSubmit = async () => {
-    setRequest({
-        question: question,
-        context: context,
-    })
-    console.log(request)
+    
     try {
-      const response: AxiosResponse<{ output_string: string }> = await axios.post('http:localhost:8000/pokemon/trained/question-context', {
-        data: request
-      });
+      const response: AxiosResponse<{ answer: string }> = await axios.post('http://127.0.0.1:8000/pokemon/trained/question-context', {question: question, context: context});
 
-      const modifiedString = response.data.output_string;
+      const modifiedString = response.data.answer;
       setModifiedString(modifiedString);
     } catch (error) {
       console.error(error);
