@@ -11,27 +11,22 @@ export default function Home() {
   const [request, setRequest] = useState({question, context});
   const [modifiedString, setModifiedString] = useState("");
 
-//   useEffect(() => {
-//     alert("Querido usuário digite suas perguntas em inglês para obter uma melhor resposta!");
-//   }, [])
-
-
   const handleSubmit = async () => {
     setRequest({
         question: question,
         context: context,
     })
     console.log(request)
-    // try {
-    //   const response: AxiosResponse<{ output_string: string }> = await axios.post('http://localhost:8000', {
-    //     data: request
-    //   });
+    try {
+      const response: AxiosResponse<{ output_string: string }> = await axios.post('http:localhost:8000/pokemon/trained/question-context', {
+        data: request
+      });
 
-    //   const modifiedString = response.data.output_string;
-    //   setModifiedString(modifiedString);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+      const modifiedString = response.data.output_string;
+      setModifiedString(modifiedString);
+    } catch (error) {
+      console.error(error);
+    }
      
   };
 
@@ -63,7 +58,7 @@ export default function Home() {
         </div>
         <div className="text-justify w-[25rem] h-[30rem] border-2 px-4 py-6 rounded-lg">
           <p className="text-redBG font-semibold mb-2 text-lg">Answser:</p>
-          <p className="text-redBG">{request.question} - {request.context}</p>
+          <p className="text-redBG">{modifiedString}</p>
         </div>
       </div>
     </div>

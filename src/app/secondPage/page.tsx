@@ -4,7 +4,7 @@ import Image from "next/image";
 import axios, { AxiosResponse } from 'axios';
 import Poke from '../../public/download.png'
 
-import Header from "./components/Header"
+import Header from "../components/Header"
 
 export default function Home() {
 
@@ -19,7 +19,7 @@ export default function Home() {
     })
     console.log(request)
     try {
-      const response: AxiosResponse<{ output_string: string }> = await axios.post('http:localhost:8000/pokemon/trained/question', {
+      const response: AxiosResponse<{ output_string: string }> = await axios.post('http:localhost:8000/pokemon/untrained/question', {
         data: request
       });
 
